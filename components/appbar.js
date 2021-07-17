@@ -3,10 +3,10 @@ import { Header } from 'react-native-elements';
 export default function Appbar() {
   return (
     <Header
-      backgroundColor={'#3D6089'}
+      backgroundColor={'#002171'}
       centerComponent={{
-        text: 'Weather',
-        style: { color: '#fff', fontSize: 20 },
+        text: 'Weather Forecasting',
+        style: { color: '#fff176', fontSize: 15 , fontWeight:'bold' },
       }}
     />
   );

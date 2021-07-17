@@ -26,7 +26,7 @@ export default function Card(props) {
   const styles = StyleSheet.create({
     card: {
       display: 'flex',
-      backgroundColor: '#f1d4d4',
+      backgroundColor: '#5472d3',
       justifyContent: 'space-around',
       margin: 20,
       padding: 10,
@@ -57,23 +57,31 @@ export default function Card(props) {
       paddingLeft: 50,
       paddingRight: 50,
     },
+    text:{
+      fontWeight:'bold',
+      color:'#ffeb3b',
+    },
   });
 
   return (
     <View style={styles.card}>
+
       <View>
-        <Text style={{ fontWeight: 'bold', fontSize: 30 }}>{name}</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 40 , color:"#03a9f4"}}>{name}</Text>
       </View>
 
       <View style={styles.top}>
+
         <View style={{ textAlign: 'left', paddingLeft: 25 }}>
-          <Text>MAX</Text>
+          <Text style={styles.text}>MAX</Text>
           <Text>{main.temp_max} &#8451; </Text>
         </View>
+
         <View style={{ textAlign: 'right', paddingRight: 25 }}>
-          <Text>MIN</Text>
+          <Text style={styles.text}>MIN</Text>
           <Text>{main.temp_min}&#8451; </Text>
         </View>
+
       </View>
 
       <View>
@@ -84,13 +92,16 @@ export default function Card(props) {
       </View>
 
       <View>
+
         <Text style={{ fontWeight: 'bold', fontSize: 30 }}>
           {main.temp}&#8451;
         </Text>
+
         <View style={styles.bottom}>
-          <Text>Feels Like </Text>
+          <Text style={styles.text}>Feels Like </Text>
           <Text>{main.feels_like}&#8451; </Text>
         </View>
+
       </View>
     </View>
   );
