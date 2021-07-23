@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Text, StyleSheet, TextInput, View, Button, Image } from 'react-native';
+import Images from './Image';
 
 export default function Card(props) {
   const [main, setMain] = useState({});
   const [weather, setWeather] = useState({});
   const [name, setName] = useState('');
+  const [imgstatus,setStatus] = useState(0);
+  const [imgid,setID] = useState('');
+
   const title = props.title;
 
   useEffect(() => {
@@ -17,11 +21,13 @@ export default function Card(props) {
         setMain(res.data.main);
         setWeather(res.data.weather[0]);
         setName(res.data.name);
+        setID(res.data.weather[0].icon);
         console.log(res.data.weather[0].icon);
+        console.log(res.data.name)
       });
   }, [title]);
 
-  const icon = `http://openweathermap.org/img/wn/${weather.icon}@2x.png`;
+
 
   const styles = StyleSheet.create({
     card: {
@@ -46,9 +52,7 @@ export default function Card(props) {
       width: 80,
     },
     iconCon: {
-      display: 'flex',
-      justifyContent: 'space-around',
-      flexDirection: 'row',
+      alignItems:"center",
     },
     bottom: {
       display: 'flex',
@@ -61,13 +65,14 @@ export default function Card(props) {
       fontWeight:'bold',
       color:'#ffeb3b',
     },
+   
   });
 
   return (
     <View style={styles.card}>
 
       <View>
-        <Text style={{ fontWeight: 'bold', fontSize: 40 , color:"#03a9f4"}}>{name}</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 40 , color:"#03a9f4",textAlign:"center"}}>{name}</Text>
       </View>
 
       <View style={styles.top}>
@@ -84,16 +89,21 @@ export default function Card(props) {
 
       </View>
 
-      <View>
-        <Text>{weather.main}</Text>
+      <View >
+        <Text style={{textAlign:"center",}}>{weather.main}</Text>
+
         <View style={styles.iconCon}>
-          <Image style={styles.icon} source={icon} />
+          {
+            imgid?
+            <Images icon={weather.icon}></Images>
+            :null
+          }
         </View>
       </View>
 
       <View>
 
-        <Text style={{ fontWeight: 'bold', fontSize: 30 }}>
+        <Text style={{ fontWeight: 'bold', fontSize: 30,textAlign:"center" }}>
           {main.temp}&#8451;
         </Text>
 

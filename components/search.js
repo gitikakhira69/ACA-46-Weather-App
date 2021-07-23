@@ -6,10 +6,10 @@ export default function Search() {
   const [scr, setScr] = useState('');
   const [scrc, setScrc] = useState('');
 
-  function handleChange(e) {
-    setScr(e.target.value);
+  function handleChange(val) {
+    setScr(val);
   }
-  function handleClick(e) {
+  function handleClick() {
     setScrc(scr);
 
   }
@@ -36,7 +36,7 @@ export default function Search() {
         <TextInput
           placeholder="City Name"
           value={scr}
-          onChange={handleChange}
+          onChangeText={(val)=>handleChange(val)}
         />
       </View>
 
